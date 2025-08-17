@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>El Pozo del Saber - Plataforma Educativa</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+			color: white;
+			min-height: 100vh;
+			line-height: 1.6;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.header {
+			text-align: center;
+			padding: 40px 0;
+		}
+
+		.logo {
+			font-size: 3rem;
+			font-weight: bold;
+			margin-bottom: 20px;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+		}
+
+		.subtitle {
+			font-size: 1.2rem;
+			opacity: 0.9;
+			margin-bottom: 40px;
+		}
+
+		.main-content {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+			margin-bottom: 40px;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			border-radius: 15px;
+			padding: 30px;
+			text-align: center;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+		}
+
+		.card h3 {
+			font-size: 1.5rem;
+			margin-bottom: 15px;
+			color: #ffd700;
+		}
+
+		.card p {
+			margin-bottom: 20px;
+			opacity: 0.9;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 12px 30px;
+			background: linear-gradient(45deg, #ffd700, #ffed4e);
+			color: #1e3c72;
+			text-decoration: none;
+			border-radius: 25px;
+			font-weight: bold;
+			transition: all 0.3s ease;
+			border: none;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			transform: scale(1.05);
+			box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+		}
+
+		.features {
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 15px;
+			padding: 40px;
+			margin-bottom: 40px;
+		}
+
+		.features h2 {
+			text-align: center;
+			margin-bottom: 30px;
+			color: #ffd700;
+			font-size: 2rem;
+		}
+
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 20px;
+		}
+
+		.feature-item {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.feature-icon {
+			width: 40px;
+			height: 40px;
+			background: #ffd700;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #1e3c72;
+			font-weight: bold;
+		}
+
+		.footer {
+			text-align: center;
+			padding: 30px 0;
+			opacity: 0.8;
+			border-top: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		@media (max-width: 768px) {
+			.logo {
+				font-size: 2rem;
+			}
+			
+			.main-content {
+				grid-template-columns: 1fr;
+			}
+			
+			.container {
+				padding: 15px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<h1 class="logo">El Pozo del Saber</h1>
+			<p class="subtitle">Plataforma educativa gamificada para ingeniería de petróleos</p>
+		</header>
+
+		<main>
+			<div class="main-content">
+				<div class="card">
+					<h3>🎓 Aprende</h3>
+					<p>Accede a contenido educativo de alta calidad en ingeniería de petróleos</p>
+					<button class="btn" onclick="scrollToSection('features')">Explorar</button>
+				</div>
+
+				<div class="card">
+					<h3>🎮 Gamifica</h3>
+					<p>Convierte tu aprendizaje en una experiencia divertida y motivadora</p>
+					<button class="btn" onclick="scrollToSection('features')">Descubrir</button>
+				</div>
+
+				<div class="card">
+					<h3>🚀 Avanza</h3>
+					<p>Progresa en tu carrera profesional con conocimientos especializados</p>
+					<button class="btn" onclick="scrollToSection('features')">Comenzar</button>
+				</div>
+			</div>
+
+			<div class="features" id="features">
+				<h2>Características Principales</h2>
+				<div class="features-grid">
+					<div class="feature-item">
+						<div class="feature-icon">📚</div>
+						<div>
+							<h4>Materias Especializadas</h4>
+							<p>Balance de materia y energía, geoquímica del petróleo, ingeniería de yacimientos</p>
+						</div>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon">🎯</div>
+						<div>
+							<h4>Sistema de Logros</h4>
+							<p>Gana puntos y desbloquea logros mientras aprendes</p>
+						</div>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon">📅</div>
+						<div>
+							<h4>Calendario de Eventos</h4>
+							<p>Mantente al día con las actividades y fechas importantes</p>
+						</div>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon">👨‍🏫</div>
+						<div>
+							<h4>Perfil del Profesor</h4>
+							<p>Conoce a tu instructor y su experiencia en el campo</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="main-content">
+				<div class="card">
+					<h3>🚀 ¿Listo para empezar?</h3>
+					<p>Únete a nuestra plataforma y transforma tu aprendizaje en ingeniería de petróleos</p>
+					<button class="btn" onclick="startLearning()">Comenzar Ahora</button>
+				</div>
+			</div>
+		</main>
+
+		<footer class="footer">
+			<p>&copy; 2024 El Pozo del Saber. Todos los derechos reservados.</p>
+		</footer>
+	</div>
+
+	<script>
+		function scrollToSection(sectionId) {
+			const element = document.getElementById(sectionId);
+			if (element) {
+				element.scrollIntoView({ behavior: 'smooth' });
+			}
+		}
+
+		function startLearning() {
+			// Aquí puedes agregar la lógica para redirigir a la aplicación Next.js
+			alert('¡Bienvenido a El Pozo del Saber! Redirigiendo a la plataforma...');
+			// window.location.href = '/app'; // Descomenta esta línea si quieres redirigir
+		}
+
+		// Efecto de aparición suave para las tarjetas
+		const observerOptions = {
+			threshold: 0.1,
+			rootMargin: '0px 0px -50px 0px'
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.style.opacity = '1';
+					entry.target.style.transform = 'translateY(0)';
+				}
+			});
+		}, observerOptions);
+
+		// Aplicar el efecto a todas las tarjetas
+		document.querySelectorAll('.card').forEach(card => {
+			card.style.opacity = '0';
+			card.style.transform = 'translateY(20px)';
+			card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+			observer.observe(card);
+		});
+	</script>
+</body>
+</html>
