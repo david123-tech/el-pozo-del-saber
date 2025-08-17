@@ -1,0 +1,5 @@
+theme: jekyll-theme-cayman
+title: El Pozo del Saber
+description: Plataforma educativa gamificada para ingeniería de petróleos
+url: "https://[tu-usuario].github.io/el-pozo-del-saber"
+baseurl: "/el-pozo-del-saber"

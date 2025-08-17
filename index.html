@@ -4,6 +4,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>El Pozo del Saber - Plataforma Educativa</title>
+	<meta name="description" content="Plataforma educativa gamificada para ingeniería de petróleos. Aprende balance de materia y energía, geoquímica del petróleo e ingeniería de yacimientos de forma interactiva.">
+	<meta name="keywords" content="ingeniería petróleos, educación, gamificación, balance materia energía, geoquímica petróleo, ingeniería yacimientos">
+	<meta name="author" content="El Pozo del Saber">
+	<meta name="robots" content="index, follow">
+	<meta property="og:title" content="El Pozo del Saber - Plataforma Educativa">
+	<meta property="og:description" content="Plataforma educativa gamificada para ingeniería de petróleos">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://[tu-usuario].github.io/el-pozo-del-saber">
+	<meta property="og:image" content="https://[tu-usuario].github.io/el-pozo-del-saber/placeholder-logo.png">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="icon" type="image/png" href="/placeholder-logo.png">
+	<link rel="apple-touch-icon" href="/placeholder-logo.png">
 	<style>
 		* {
 			margin: 0;
@@ -25,9 +37,97 @@
 			padding: 20px;
 		}
 
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			background: rgba(30, 60, 114, 0.95);
+			backdrop-filter: blur(10px);
+			z-index: 1000;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.nav-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 70px;
+		}
+
+		.nav-brand .logo {
+			font-size: 1.5rem;
+			margin: 0;
+			color: #ffd700;
+		}
+
+		.nav-menu {
+			display: flex;
+			gap: 30px;
+		}
+
+		.nav-link {
+			color: white;
+			text-decoration: none;
+			font-weight: 500;
+			transition: color 0.3s ease;
+			position: relative;
+		}
+
+		.nav-link:hover {
+			color: #ffd700;
+		}
+
+		.nav-link::after {
+			content: '';
+			position: absolute;
+			bottom: -5px;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: #ffd700;
+			transition: width 0.3s ease;
+		}
+
+		.nav-link:hover::after {
+			width: 100%;
+		}
+
+		.nav-toggle {
+			display: none;
+			flex-direction: column;
+			cursor: pointer;
+			gap: 4px;
+		}
+
+		.nav-toggle span {
+			width: 25px;
+			height: 3px;
+			background: white;
+			transition: all 0.3s ease;
+		}
+
 		.header {
 			text-align: center;
-			padding: 40px 0;
+			padding: 120px 0 60px 0;
+		}
+
+		.hero {
+			text-align: center;
+		}
+
+		.hero-title {
+			font-size: 4rem;
+			font-weight: bold;
+			margin-bottom: 20px;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+			background: linear-gradient(45deg, #ffd700, #ffed4e);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
 		}
 
 		.logo {
@@ -76,9 +176,17 @@
 			opacity: 0.9;
 		}
 
+		.hero-buttons {
+			display: flex;
+			gap: 20px;
+			justify-content: center;
+			margin-top: 30px;
+			flex-wrap: wrap;
+		}
+
 		.btn {
 			display: inline-block;
-			padding: 12px 30px;
+			padding: 15px 35px;
 			background: linear-gradient(45deg, #ffd700, #ffed4e);
 			color: #1e3c72;
 			text-decoration: none;
@@ -87,11 +195,28 @@
 			transition: all 0.3s ease;
 			border: none;
 			cursor: pointer;
+			font-size: 1.1rem;
+		}
+
+		.btn-primary {
+			background: linear-gradient(45deg, #ffd700, #ffed4e);
+			color: #1e3c72;
+		}
+
+		.btn-secondary {
+			background: transparent;
+			color: white;
+			border: 2px solid #ffd700;
 		}
 
 		.btn:hover {
-			transform: scale(1.05);
-			box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+			transform: translateY(-3px);
+			box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+		}
+
+		.btn-secondary:hover {
+			background: #ffd700;
+			color: #1e3c72;
 		}
 
 		.features {
@@ -139,26 +264,97 @@
 			border-top: 1px solid rgba(255, 255, 255, 0.2);
 		}
 
-		@media (max-width: 768px) {
-			.logo {
-				font-size: 2rem;
-			}
-			
-			.main-content {
-				grid-template-columns: 1fr;
-			}
-			
-			.container {
-				padding: 15px;
-			}
+			@media (max-width: 768px) {
+		.nav-menu {
+			position: fixed;
+			top: 70px;
+			left: -100%;
+			width: 100%;
+			height: calc(100vh - 70px);
+			background: rgba(30, 60, 114, 0.98);
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			padding-top: 50px;
+			transition: left 0.3s ease;
 		}
+
+		.nav-menu.active {
+			left: 0;
+		}
+
+		.nav-toggle {
+			display: flex;
+		}
+
+		.nav-toggle.active span:nth-child(1) {
+			transform: rotate(45deg) translate(5px, 5px);
+		}
+
+		.nav-toggle.active span:nth-child(2) {
+			opacity: 0;
+		}
+
+		.nav-toggle.active span:nth-child(3) {
+			transform: rotate(-45deg) translate(7px, -6px);
+		}
+
+		.hero-title {
+			font-size: 2.5rem;
+		}
+
+		.hero-buttons {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.logo {
+			font-size: 2rem;
+		}
+		
+		.main-content {
+			grid-template-columns: 1fr;
+		}
+		
+		.container {
+			padding: 15px;
+		}
+
+		.features-grid {
+			grid-template-columns: 1fr;
+		}
+	}
 	</style>
 </head>
 <body>
 	<div class="container">
 		<header class="header">
-			<h1 class="logo">El Pozo del Saber</h1>
-			<p class="subtitle">Plataforma educativa gamificada para ingeniería de petróleos</p>
+			<nav class="nav">
+				<div class="nav-container">
+					<div class="nav-brand">
+						<h1 class="logo">El Pozo del Saber</h1>
+					</div>
+					<div class="nav-menu">
+						<a href="#inicio" class="nav-link">Inicio</a>
+						<a href="#materias" class="nav-link">Materias</a>
+						<a href="#caracteristicas" class="nav-link">Características</a>
+						<a href="#contacto" class="nav-link">Contacto</a>
+					</div>
+					<div class="nav-toggle" onclick="toggleNav()">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</nav>
+			<div class="hero">
+				<h1 class="hero-title">El Pozo del Saber</h1>
+				<p class="subtitle">Plataforma educativa gamificada para ingeniería de petróleos</p>
+				<div class="hero-buttons">
+					<button class="btn btn-primary" onclick="scrollToSection('materias')">Explorar Materias</button>
+					<button class="btn btn-secondary" onclick="scrollToSection('caracteristicas')">Ver Características</button>
+				</div>
+			</div>
 		</header>
 
 		<main>
@@ -231,17 +427,255 @@
 	</div>
 
 	<script>
+		// Registrar Service Worker
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/sw.js')
+					.then((registration) => {
+						console.log('SW registrado: ', registration);
+					})
+					.catch((registrationError) => {
+						console.log('SW registro falló: ', registrationError);
+					});
+			});
+		}
+
+		// Navegación móvil
+		function toggleNav() {
+			const navMenu = document.querySelector('.nav-menu');
+			const navToggle = document.querySelector('.nav-toggle');
+			
+			navMenu.classList.toggle('active');
+			navToggle.classList.toggle('active');
+		}
+
+		// Cerrar menú al hacer clic en un enlace
+		document.querySelectorAll('.nav-link').forEach(link => {
+			link.addEventListener('click', () => {
+				const navMenu = document.querySelector('.nav-menu');
+				const navToggle = document.querySelector('.nav-toggle');
+				
+				navMenu.classList.remove('active');
+				navToggle.classList.remove('active');
+			});
+		});
+
+		// Navegación suave
 		function scrollToSection(sectionId) {
 			const element = document.getElementById(sectionId);
 			if (element) {
-				element.scrollIntoView({ behavior: 'smooth' });
+				const offsetTop = element.offsetTop - 80; // Ajustar para la navegación fija
+				window.scrollTo({
+					top: offsetTop,
+					behavior: 'smooth'
+				});
 			}
 		}
 
+		// Navegación activa en scroll
+		window.addEventListener('scroll', () => {
+			const sections = document.querySelectorAll('section[id]');
+			const navLinks = document.querySelectorAll('.nav-link');
+			
+			let current = '';
+			sections.forEach(section => {
+				const sectionTop = section.offsetTop;
+				const sectionHeight = section.clientHeight;
+				if (scrollY >= (sectionTop - 200)) {
+					current = section.getAttribute('id');
+				}
+			});
+
+			navLinks.forEach(link => {
+				link.classList.remove('active');
+				if (link.getAttribute('href') === `#${current}`) {
+					link.classList.add('active');
+				}
+			});
+		});
+
 		function startLearning() {
-			// Aquí puedes agregar la lógica para redirigir a la aplicación Next.js
-			alert('¡Bienvenido a El Pozo del Saber! Redirigiendo a la plataforma...');
-			// window.location.href = '/app'; // Descomenta esta línea si quieres redirigir
+			// Mostrar modal de bienvenida
+			showWelcomeModal();
+		}
+
+		function showWelcomeModal() {
+			const modal = document.createElement('div');
+			modal.className = 'welcome-modal';
+			modal.innerHTML = `
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3>🎉 ¡Bienvenido a El Pozo del Saber!</h3>
+						<button class="modal-close" onclick="closeModal()">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Estás a punto de comenzar tu viaje educativo en ingeniería de petróleos.</p>
+						<div class="modal-features">
+							<div class="modal-feature">
+								<span>📚</span>
+								<p>Materias especializadas</p>
+							</div>
+							<div class="modal-feature">
+								<span>🎮</span>
+								<p>Sistema gamificado</p>
+							</div>
+							<div class="modal-feature">
+								<span>📅</span>
+								<p>Calendario de eventos</p>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" onclick="exploreMaterias()">Explorar Materias</button>
+						<button class="btn btn-secondary" onclick="closeModal()">Cerrar</button>
+					</div>
+				</div>
+			`;
+			
+			document.body.appendChild(modal);
+			
+			// Agregar estilos del modal
+			if (!document.querySelector('#modal-styles')) {
+				const styles = document.createElement('style');
+				styles.id = 'modal-styles';
+				styles.textContent = `
+					.welcome-modal {
+						position: fixed;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: rgba(0, 0, 0, 0.8);
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						z-index: 2000;
+						animation: fadeIn 0.3s ease;
+					}
+					
+					.modal-content {
+						background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+						border-radius: 20px;
+						padding: 30px;
+						max-width: 500px;
+						width: 90%;
+						border: 1px solid rgba(255, 255, 255, 0.2);
+						animation: slideUp 0.3s ease;
+					}
+					
+					.modal-header {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-bottom: 20px;
+					}
+					
+					.modal-header h3 {
+						color: #ffd700;
+						margin: 0;
+					}
+					
+					.modal-close {
+						background: none;
+						border: none;
+						color: white;
+						font-size: 2rem;
+						cursor: pointer;
+						padding: 0;
+						width: 30px;
+						height: 30px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						border-radius: 50%;
+						transition: background 0.3s ease;
+					}
+					
+					.modal-close:hover {
+						background: rgba(255, 255, 255, 0.1);
+					}
+					
+					.modal-body {
+						margin-bottom: 25px;
+					}
+					
+					.modal-body p {
+						margin-bottom: 20px;
+						line-height: 1.6;
+					}
+					
+					.modal-features {
+						display: grid;
+						grid-template-columns: repeat(3, 1fr);
+						gap: 15px;
+						margin-bottom: 20px;
+					}
+					
+					.modal-feature {
+						text-align: center;
+						padding: 15px;
+						background: rgba(255, 255, 255, 0.1);
+						border-radius: 10px;
+						border: 1px solid rgba(255, 255, 255, 0.2);
+					}
+					
+					.modal-feature span {
+						font-size: 2rem;
+						display: block;
+						margin-bottom: 10px;
+					}
+					
+					.modal-feature p {
+						margin: 0;
+						font-size: 0.9rem;
+						opacity: 0.9;
+					}
+					
+					.modal-footer {
+						display: flex;
+						gap: 15px;
+						justify-content: center;
+					}
+					
+					@keyframes fadeIn {
+						from { opacity: 0; }
+						to { opacity: 1; }
+					}
+					
+					@keyframes slideUp {
+						from { transform: translateY(50px); opacity: 0; }
+						to { transform: translateY(0); opacity: 1; }
+					}
+					
+					@media (max-width: 768px) {
+						.modal-content {
+							padding: 20px;
+							margin: 20px;
+						}
+						
+						.modal-features {
+							grid-template-columns: 1fr;
+						}
+						
+						.modal-footer {
+							flex-direction: column;
+						}
+					}
+				`;
+				document.head.appendChild(styles);
+			}
+		}
+
+		function closeModal() {
+			const modal = document.querySelector('.welcome-modal');
+			if (modal) {
+				modal.remove();
+			}
+		}
+
+		function exploreMaterias() {
+			closeModal();
+			scrollToSection('materias');
 		}
 
 		// Efecto de aparición suave para las tarjetas
@@ -265,6 +699,27 @@
 			card.style.transform = 'translateY(20px)';
 			card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
 			observer.observe(card);
+		});
+
+		// Agregar IDs a las secciones para navegación
+		document.addEventListener('DOMContentLoaded', () => {
+			// Agregar ID a la sección de materias
+			const materiasSection = document.querySelector('.main-content');
+			if (materiasSection) {
+				materiasSection.id = 'materias';
+			}
+
+			// Agregar ID a la sección de características
+			const featuresSection = document.querySelector('.features');
+			if (featuresSection) {
+				featuresSection.id = 'caracteristicas';
+			}
+
+			// Agregar ID a la sección de inicio
+			const headerSection = document.querySelector('.header');
+			if (headerSection) {
+				headerSection.id = 'inicio';
+			}
 		});
 	</script>
 </body>

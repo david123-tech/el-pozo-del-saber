@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Página no encontrada - El Pozo del Saber</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+			color: white;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+
+		.container {
+			max-width: 600px;
+			padding: 40px 20px;
+		}
+
+		.error-code {
+			font-size: 8rem;
+			font-weight: bold;
+			color: #ffd700;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+			margin-bottom: 20px;
+		}
+
+		.error-title {
+			font-size: 2rem;
+			margin-bottom: 20px;
+			color: #ffd700;
+		}
+
+		.error-message {
+			font-size: 1.2rem;
+			margin-bottom: 40px;
+			opacity: 0.9;
+			line-height: 1.6;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 15px 40px;
+			background: linear-gradient(45deg, #ffd700, #ffed4e);
+			color: #1e3c72;
+			text-decoration: none;
+			border-radius: 25px;
+			font-weight: bold;
+			font-size: 1.1rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn:hover {
+			transform: scale(1.05);
+			box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+		}
+
+		.suggestions {
+			margin-top: 40px;
+			padding: 20px;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 15px;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.suggestions h3 {
+			color: #ffd700;
+			margin-bottom: 15px;
+		}
+
+		.suggestions ul {
+			list-style: none;
+			text-align: left;
+		}
+
+		.suggestions li {
+			margin-bottom: 10px;
+			padding-left: 20px;
+			position: relative;
+		}
+
+		.suggestions li:before {
+			content: "→";
+			position: absolute;
+			left: 0;
+			color: #ffd700;
+		}
+
+		@media (max-width: 768px) {
+			.error-code {
+				font-size: 6rem;
+			}
+			
+			.error-title {
+				font-size: 1.5rem;
+			}
+			
+			.container {
+				padding: 20px 15px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="error-code">404</div>
+		<h1 class="error-title">¡Ups! Página no encontrada</h1>
+		<p class="error-message">
+			La página que estás buscando no existe o ha sido movida. 
+			No te preocupes, puedes regresar al inicio y continuar explorando El Pozo del Saber.
+		</p>
+		
+		<a href="/" class="btn">Volver al Inicio</a>
+		
+		<div class="suggestions">
+			<h3>¿Qué puedes hacer?</h3>
+			<ul>
+				<li>Verificar que la URL esté escrita correctamente</li>
+				<li>Regresar a la página principal</li>
+				<li>Explorar las materias disponibles</li>
+				<li>Revisar el calendario de eventos</li>
+			</ul>
+		</div>
+	</div>
+
+	<script>
+		// Redirigir automáticamente después de 10 segundos
+		setTimeout(() => {
+			window.location.href = '/';
+		}, 10000);
+
+		// Contador regresivo
+		let countdown = 10;
+		const countdownElement = document.createElement('div');
+		countdownElement.style.cssText = `
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			background: rgba(255, 255, 255, 0.2);
+			padding: 10px 15px;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			backdrop-filter: blur(10px);
+		`;
+		document.body.appendChild(countdownElement);
+
+		const timer = setInterval(() => {
+			countdown--;
+			countdownElement.textContent = `Redirigiendo en ${countdown}s`;
+			
+			if (countdown <= 0) {
+				clearInterval(timer);
+				countdownElement.textContent = 'Redirigiendo...';
+			}
+		}, 1000);
+	</script>
+</body>
+</html>

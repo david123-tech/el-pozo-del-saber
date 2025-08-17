@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://[tu-usuario].github.io/el-pozo-del-saber/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
